@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  portfolio:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: brutalist-portfolio
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    volumes:
+      # Map the JSON data file so CMS modifications persist across container restarts
+      - ./src/data:/app/src/data
+      # Map the uploads folder so uploaded images persist
+      - ./public/uploads:/app/public/uploads
+    environment:
+      - NODE_ENV=production
+      - NEXT_TELEMETRY_DISABLED=1
