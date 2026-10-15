@@ -1,8 +1,10 @@
 import type { NextConfig } from "next";
 
+const isVercel = Boolean(process.env.VERCEL);
+
 const nextConfig: NextConfig = {
   devIndicators: false,
-  output: "standalone",
+  ...(isVercel ? {} : { output: "standalone" }),
   trailingSlash: true,
   // sharp ships a native binary that output file tracing can miss in standalone builds —
   // see node_modules/next/dist/docs/.../output.md.
