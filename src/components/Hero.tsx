@@ -35,7 +35,7 @@ export default function Hero({ data }: { data: ContentData["hero"] }) {
     <section
       id="top"
       ref={root}
-      className="relative w-full h-screen min-h-[680px] flex flex-col justify-between overflow-hidden bg-[#000000] text-white pt-24 pb-6 px-6 md:px-12 select-none"
+      className="relative w-full min-h-[calc(100svh-80px)] flex flex-col justify-between overflow-hidden bg-[#000000] text-white pt-24 pb-6 px-6 md:px-12 select-none"
     >
       {/* Center Section: Large Portrait + Flanking Tags (100% Kaely Liora reference composition) */}
       <div className="relative z-10 my-auto w-full flex items-center justify-between">
@@ -50,7 +50,7 @@ export default function Hero({ data }: { data: ContentData["hero"] }) {
         </div>
 
         {/* Central Portrait: Large vertical focal portrait matching reference */}
-        <div className="hero-portrait-image relative mx-auto w-[min(580px,86vw)] h-[58vh] md:h-[64vh] flex items-center justify-center">
+        <div className="hero-portrait-image relative mx-auto w-[min(580px,86vw)] h-[42vh] md:h-[48vh] flex items-center justify-center">
           <Image
             src="/images/hero-focal-portrait.jpg"
             alt={data.name || "Gen Shouketsu"}
