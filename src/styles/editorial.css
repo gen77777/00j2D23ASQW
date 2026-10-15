@@ -3,7 +3,7 @@
 html { scroll-padding-top: 88px; }
 :focus-visible { outline: 2px solid var(--color-ink); outline-offset: 6px; }
 .portfolio-page { width: 100%; }
-.editorial-section { padding: clamp(72px, 10vw, 160px) var(--editorial-gutter); scroll-margin-top: 64px; }
+.editorial-section { padding: clamp(88px, 10vw, 160px) var(--editorial-gutter); scroll-margin-top: 96px; }
 .section-kicker { display: flex; justify-content: space-between; gap: 24px; font-family: var(--font-mono); font-size: 10px; letter-spacing: .06em; line-height: 1.8; margin-bottom: clamp(36px, 5vw, 80px); }
 .section-kicker > :last-child { text-align: right; }
 .editorial-rule { height: 1px; width: 100%; background: currentColor; opacity: .24; }
