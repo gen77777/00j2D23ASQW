@@ -8,9 +8,9 @@ import { useGsapContext } from "@/components/motion/useGsapContext";
 import { useMotion } from "@/components/motion/MotionProvider";
 
 const links = [
-  { href: "/#profile", label: "プロフィール", en: "ABOUT" },
-  { href: "/#services", label: "スキル", en: "SERVICES" },
-  { href: "/#experience", label: "職務経歴", en: "EXPERIENCE" },
+  { href: "/#top", label: "ホーム", en: "HOME" },
+  { href: "/#resume", label: "経歴・資格", en: "RESUME" },
+  { href: "/#projects", label: "実績", en: "PORTFOLIO" },
 ];
 
 export default function Header({ siteName }: { siteName: string }) {

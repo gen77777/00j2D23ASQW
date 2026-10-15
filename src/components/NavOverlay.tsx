@@ -5,9 +5,9 @@ import Link from "next/link";
 import Dialog, { type DialogHandle } from "@/components/ui/Dialog";
 
 const LINKS = [
-  { href: "/#experience", label: "職務経歴" },
-  { href: "/#services", label: "スキル" },
-  { href: "/#profile", label: "プロフィール" },
+  { href: "/#top", label: "ホーム" },
+  { href: "/#resume", label: "職務経歴・履歴書" },
+  { href: "/#projects", label: "実績" },
   { href: "/contact", label: "お問い合わせ" },
 ];
 

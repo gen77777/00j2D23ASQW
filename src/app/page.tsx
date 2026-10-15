@@ -1,12 +1,9 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import ResumeSection from "@/components/sections/ResumeSection";
 import Projects from "@/components/sections/Projects";
-import Services from "@/components/sections/Services";
-import Resume from "@/components/sections/Resume";
-import WorkExperience from "@/components/sections/WorkExperience";
 import Footer from "@/components/Footer";
 import { getContent } from "@/lib/content";
-import PageTransition from "@/components/motion/PageTransition";
 
 export default async function Home() {
   const data = await getContent();
@@ -14,14 +11,10 @@ export default async function Home() {
   return (
     <>
       <Header siteName={data.meta.siteName} />
-      <main id="top" className="portfolio-page min-h-screen bg-black text-white">
-        <PageTransition>
-          <Hero data={data.hero} />
-          <WorkExperience entries={data.resume.experience} />
-          {data.projects.length > 0 && <Projects data={data.projects} />}
-          <Services data={data.services} />
-          <Resume data={data.resume} />
-        </PageTransition>
+      <main id="top" className="portfolio-page min-h-screen bg-[#000000] text-white">
+        <Hero data={data.hero} />
+        <ResumeSection data={data.resume} />
+        {data.projects.length > 0 && <Projects data={data.projects} />}
       </main>
       <Footer data={data.footer} />
     </>

@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  devIndicators: false,
   output: "standalone",
   trailingSlash: true,
   // sharp ships a native binary that output file tracing can miss in standalone builds —

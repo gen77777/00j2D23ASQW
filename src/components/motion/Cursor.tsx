@@ -42,11 +42,17 @@ export default function Cursor() {
       gsap.set(ring, { autoAlpha: 1 });
       xTo(e.clientX);
       yTo(e.clientY);
-      const target = (e.target as Element | null)?.closest?.("[data-cursor]");
-      setLabel(target ? "Gen" : null);
+      const el = e.target as Element | null;
+      const target = el?.closest?.("[data-cursor]");
+      if (target && target !== document.documentElement) {
+        const val = target.getAttribute("data-cursor");
+        setLabel(val && val !== "custom" ? val : null);
+      } else {
+        setLabel(null);
+      }
     };
 
-    window.addEventListener("mousemove", onMove);
+    window.addEventListener("mousemove", onMove, { passive: true });
     return () => window.removeEventListener("mousemove", onMove);
   }, [disabled]);
 
@@ -56,11 +62,11 @@ export default function Cursor() {
     <div
       ref={ringRef}
       aria-hidden="true"
-      className={`fixed top-0 left-0 z-[9999] pointer-events-none flex items-center justify-center rounded-full border border-ink mix-blend-difference transition-[width,height] duration-200 ease-out ${
-        label ? "w-20 h-20" : "w-6 h-6"
+      className={`fixed top-0 left-0 z-[9999] pointer-events-none flex items-center justify-center rounded-full border border-white/80 bg-white/5 transition-[width,height] duration-200 ease-out ${
+        label ? "w-20 h-20 bg-white/15" : "w-6 h-6"
       }`}
     >
-      {label && <span className="eyebrow text-ink normal-case tracking-normal">{label}</span>}
+      {label && <span className="text-[10px] font-mono uppercase tracking-widest text-white">{label}</span>}
     </div>
   );
 }

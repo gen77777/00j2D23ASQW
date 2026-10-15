@@ -162,3 +162,15 @@
     color: var(--ink-60);
   }
 }
+
+/* Hide Next.js dev indicator / "N" icon */
+nextjs-portal,
+[data-nextjs-toast],
+[data-nextjs-dialog-overlay],
+[data-nextjs-indicator],
+#__next-build-watcher {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
