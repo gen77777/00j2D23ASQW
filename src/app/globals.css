@@ -1,45 +1,53 @@
 @import "tailwindcss";
-
-@theme {
-  --color-surface: #131313;
-  --color-surface-bright: #393939;
-  --color-surface-container-lowest: #0e0e0e;
-  --color-surface-container-low: #1b1b1b;
-  --color-foreground: #ffffff;
-
-  --font-sans: var(--font-hanken), ui-sans-serif, system-ui, sans-serif;
-}
+@import "../styles/tokens.css";
+@import "../styles/type.css";
 
 @layer base {
-  :root {
-    --background: #131313;
-    --foreground: #ffffff;
-  }
-
   * {
     box-sizing: border-box;
+  }
+
+  /*
+   * Native cursor is hidden only while components/motion/Cursor.tsx is actually rendering its
+   * replacement (it toggles data-cursor="custom" on <html>, which it does not do on touch or
+   * under prefers-reduced-motion) — :where() keeps this at zero specificity so the always-on
+   * admin escape hatch below reliably wins.
+   */
+  :where(html[data-cursor="custom"]) *,
+  :where(html[data-cursor="custom"]) body {
     cursor: none !important;
   }
 
-  /* Override for admin page */
   .admin-cursor-auto, .admin-cursor-auto * {
     cursor: auto !important;
   }
 
   body {
-    background-color: var(--background);
-    color: var(--foreground);
+    background-color: var(--color-paper);
+    color: var(--color-ink);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
     margin: 0;
     padding: 0;
-    cursor: none !important;
   }
 
   ::selection {
     background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  dialog::backdrop {
+    background: rgba(10, 10, 11, 0.72);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    ::view-transition-old(*),
+    ::view-transition-new(*),
+    ::view-transition-group(*) {
+      animation-duration: 0s !important;
+      animation-delay: 0s !important;
+    }
   }
 
   /* Lenis smooth scrolling default styles */
@@ -67,4 +75,90 @@
 /* Rodeo-style vertical divider */
 @utility vertical-line {
   border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* A single rotating text cylinder; the rest of the page uses native scrolling. */
+.word-cylinder {
+  container-type: inline-size;
+}
+
+.word-cylinder__scene {
+  --cylinder-radius: clamp(80px, 29cqw, 190px);
+  position: relative;
+  perspective: 1100px;
+  overflow: hidden;
+}
+
+.word-cylinder__tilt,
+.word-cylinder__rotor {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+}
+
+.word-cylinder__tilt {
+  transform: rotateX(-8deg) rotateZ(-4deg);
+}
+
+.word-cylinder__rotor {
+  animation: text-cylinder-turn 28s linear infinite;
+}
+
+.word-cylinder__word {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 140px;
+  margin-left: -70px;
+  margin-top: -10px;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: clamp(10px, 2.8cqw, 13px);
+  line-height: 20px;
+  letter-spacing: 0.025em;
+  color: var(--ink-60);
+  white-space: nowrap;
+  backface-visibility: hidden;
+  transform: translateY(var(--word-height)) rotateY(var(--word-angle)) translateZ(var(--cylinder-radius));
+}
+
+.word-cylinder__words {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@keyframes text-cylinder-turn {
+  from { transform: rotateY(0deg); }
+  to { transform: rotateY(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .word-cylinder__scene,
+  .word-cylinder__controls {
+    display: none;
+  }
+
+  .word-cylinder__rotor {
+    animation: none;
+  }
+
+  .word-cylinder__words {
+    position: static;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 20px;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip-path: none;
+    white-space: normal;
+    font-size: 12px;
+    line-height: 1.8;
+    color: var(--ink-60);
+  }
 }

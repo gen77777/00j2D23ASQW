@@ -1,21 +1,49 @@
-export default function Header() {
-  return (
-    <header className="fixed top-0 left-0 right-0 p-8 z-50 flex justify-between items-start pointer-events-none">
-      {/* Logo */}
-      <div className="pointer-events-auto">
-        <span className="text-sm font-bold tracking-[0.1em] uppercase">GENSHOUKETSU</span>
-      </div>
+"use client";
 
-      {/* Navigation */}
-      <nav className="pointer-events-auto flex gap-6 text-sm tracking-[0.1em] uppercase font-semibold">
-        <a href="#work" className="hover:opacity-70 transition-opacity flex items-center gap-2">
-          <span className="w-1 h-1 bg-white rounded-full" />
-          WORK
-        </a>
-        <a href="#contact" className="hover:opacity-70 transition-opacity">
-          CONTACT
-        </a>
+import { useRef } from "react";
+import Link from "next/link";
+import gsap from "gsap";
+import NavOverlay from "@/components/NavOverlay";
+import { useGsapContext } from "@/components/motion/useGsapContext";
+import { useMotion } from "@/components/motion/MotionProvider";
+
+const links = [
+  { href: "/#profile", label: "プロフィール", en: "ABOUT" },
+  { href: "/#services", label: "スキル", en: "SERVICES" },
+  { href: "/#experience", label: "職務経歴", en: "EXPERIENCE" },
+];
+
+export default function Header({ siteName }: { siteName: string }) {
+  const root = useRef<HTMLElement>(null);
+  const { reducedMotion } = useMotion();
+  useGsapContext(() => {
+    if (reducedMotion) return;
+    gsap.fromTo(".reading-progress", { scaleX: 0 }, { scaleX: 1, ease: "none", scrollTrigger: { start: 0, end: "max", scrub: true } });
+  }, [reducedMotion], root);
+  return (
+    <header ref={root} className="site-header">
+      <Link href="/" className="site-signature" aria-label={`${siteName} ホーム`} data-cursor="戻る">
+        <span>{siteName}<small>GRAPHIC × DIGITAL</small></span>
+      </Link>
+      <nav className="desktop-nav" aria-label="メインナビゲーション">
+        {links.map((link) => (
+          <Link key={link.href} href={link.href} className="nav-roll" data-cursor="見る">
+            <span>{link.label}</span>
+            <span aria-hidden="true">{link.en}</span>
+          </Link>
+        ))}
       </nav>
+      <div className="flex items-center gap-4">
+        <Link
+          href="/contact/"
+          className="header-contact-btn hidden sm:inline-flex"
+          data-cursor="話す"
+        >
+          CONTACT
+        </Link>
+        <NavOverlay />
+      </div>
+      <span className="reading-progress" aria-hidden="true" />
     </header>
   );
 }

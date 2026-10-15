@@ -1,45 +1,260 @@
 {
+  "meta": {
+    "siteName": "厳正傑",
+    "tagline": "東京を拠点に、グラフィックデザインとWeb制作をつなぐ",
+    "url": ""
+  },
   "hero": {
     "name": "厳正傑",
-    "role": "Web & App Developer",
-    "englishTitle": "Seeking the balance between code logic and digital aesthetics",
-    "japaneseTitle": "東京を拠点に活動するフルスタックエンジニア。",
+    "role": "グラフィックデザイナー / Web制作",
+    "englishTitle": "伝わるデザインを、使える体験へ。",
+    "japaneseTitle": "パッケージデザインの実務経験を、Webとアプリの表現へ。",
     "services": [
-      "FRONTEND",
-      "BACKEND",
-      "MOBILE",
-      "DESIGN"
+      "グラフィック",
+      "パッケージ",
+      "Web制作",
+      "UI / UX"
     ],
-    "settings3d": {
-      "duration": 20,
+    "ring": {
+      "duration": 28,
       "radius": 280,
       "offsets": "-160, 80, -40, 140, 0, -100, 100"
-    }
+    },
+    "ringWords": [
+      "JAVA",
+      "TYPOGRAPHY",
+      "HTML / CSS",
+      "UI DESIGN",
+      "SPRING BOOT",
+      "PACKAGING",
+      "JAVASCRIPT",
+      "LAYOUT",
+      "FRONTEND",
+      "COLOR",
+      "BACKEND",
+      "BRANDING",
+      "WEB APPS",
+      "GRAPHIC DESIGN",
+      "API",
+      "ILLUSTRATOR",
+      "RESPONSIVE",
+      "PHOTOSHOP",
+      "DATABASE",
+      "BLENDER",
+      "GIT",
+      "MOCKUP",
+      "UI / UX",
+      "DTP",
+      "COMPONENTS",
+      "VISUAL DESIGN",
+      "ACCESSIBILITY",
+      "PRINT DESIGN",
+      "INTERACTION",
+      "LETTERING",
+      "CODE",
+      "COMPOSITION",
+      "PROTOTYPE",
+      "PHOTOGRAPHY",
+      "WEB DESIGN",
+      "CREATIVE"
+    ]
   },
-  "projects": [
+  "manifest": {
+    "eyebrow": "厳 正傑 / ゲン ショウケツ — 東京",
+    "statement": "約3年間のデザイン実務で培った「伝える力」に、Webの技術を重ねる。"
+  },
+  "approach": {
+    "eyebrow": "大切にしている4つの視点",
+    "intro": "パッケージの見やすさ、開けやすさ、つくりやすさ。実務で向き合ってきた問いを、Webやアプリの使いやすさにつなげています。",
+    "capabilities": [
+      {
+        "id": "user-perspective",
+        "title": "ユーザー視点",
+        "description": "目を引くだけでなく、必要な情報が直感的に伝わるビジュアルを設計します。"
+      },
+      {
+        "id": "feasibility",
+        "title": "実現できるデザイン",
+        "description": "印刷コストや構造、量産性まで考え、表現と技術的な制約のバランスを取ります。"
+      },
+      {
+        "id": "collaboration",
+        "title": "品質と納期",
+        "description": "チームや印刷会社と連携し、入稿データの調整から色校正まで丁寧に進めます。"
+      },
+      {
+        "id": "continuous-learning",
+        "title": "学び続ける姿勢",
+        "description": "JavaとSpring Bootを学び、見た目だけでなく保守性や拡張性にも目を向けています。"
+      }
+    ]
+  },
+  "services": {
+    "eyebrow": "スキルと制作領域",
+    "items": [
+      {
+        "id": "graphic-design",
+        "title": "グラフィック・パッケージ",
+        "description": "川茶グループのデザイン部で、自社ブランドのパッケージや販促物を制作。文字の読みやすさと美しさ、ブランドの一貫性を大切にしています。",
+        "deliverables": [
+          "実務経験：約3年",
+          "Adobe Illustrator / Photoshop / Blender",
+          "パッケージ・ロゴ・カタログ・ポスター",
+          "DTP・入稿データ作成・色校正"
+        ]
+      },
+      {
+        "id": "web-ui",
+        "title": "Web・UI制作",
+        "description": "HTML、CSS、JavaScriptによるレスポンシブなWebサイト制作。グラフィックデザインで培った構図や配色、情報整理の経験をUI設計に活かしています。",
+        "deliverables": [
+          "HTML5 / CSS3 / JavaScript",
+          "レスポンシブレイアウト",
+          "ユーザー視点のUI / UX"
+        ]
+      },
+      {
+        "id": "development",
+        "title": "アプリ・バックエンド開発",
+        "description": "早稲田文理専門学校で、Javaのオブジェクト指向とSpring Bootによる開発を学習中。リリース後も価値を提供し続けられる設計に関心があります。",
+        "deliverables": [
+          "専門学校で学習中",
+          "Java / Spring Boot",
+          "Eclipse / VS Code / IntelliJ"
+        ]
+      },
+      {
+        "id": "communication",
+        "title": "資料制作・コミュニケーション",
+        "description": "Word、Excel、PowerPointを用いた資料作成とプレゼンテーション資料の制作に対応。日本語能力試験N2を取得し、N1合格に向けた学習を続けています。",
+        "deliverables": [
+          "Microsoft Word / Excel / PowerPoint",
+          "JLPT N2取得・N1学習中",
+          "資料作成・プレゼンテーション"
+        ]
+      }
+    ]
+  },
+  "projects": [],
+  "practice": {
+    "eyebrow": "日々の視点 / 東京",
+    "statement": "街の風景や建築を撮影し、構図と配色のヒントを集めています。日常の観察を、次のデザインへ。",
+    "disciplines": [
+      "タイポグラフィ",
+      "写真",
+      "配色",
+      "ビジュアル設計"
+    ],
+    "basedIn": "日本、東京"
+  },
+  "coreVision": {
+    "eyebrow": "これから目指すこと",
+    "headline": "手に取りやすさから、使いやすさへ。",
+    "body": "パッケージの開けやすさや陳列のしやすさを追求した経験を、サービスの操作性と利便性へ。デザインの実務経験にデジタルの知識を重ね、日本のグラフィックデザインの現場で価値を生み出していきたいと考えています。"
+  },
+  "contact": {
+    "eyebrow": "お問い合わせ",
+    "headline": "採用や制作のご相談をお待ちしています。"
+  },
+  "footer": {
+    "copyrightName": "厳正傑",
+    "email": "Genshouketsu@gmail.com",
+    "location": "日本、東京",
+    "socials": []
+  },
+  "leads": [
     {
-      "id": 1,
-      "title": "SotsuGyouSaku",
-      "category": "FULLSTACK . WEB APP",
-      "imageUrl": "https://images.unsplash.com/photo-1618761714954-0b8cd0026356?auto=format&fit=crop&w=800&q=80",
-      "mediaType": "image"
-    },
-    {
-      "id": 2,
-      "title": "Audio EQ",
-      "category": "INTERACTIVE . UI",
-      "imageUrl": "https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?auto=format&fit=crop&w=800&q=80",
-      "mediaType": "image"
-    },
-    {
-      "id": 3,
-      "title": "AI Landing Page",
-      "category": "GENERATIVE . INTERFACE",
-      "imageUrl": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80",
-      "mediaType": "image"
+      "id": "1788063567751",
+      "name": "Test User",
+      "email": "test@example.com",
+      "message": "This is a test message.",
+      "createdAt": "2026-08-30T04:19:27.751Z"
     }
   ],
-  "footer": {
-    "copyrightName": "厳正傑"
+  "resume": {
+    "eyebrow": "プロフィール / 経歴",
+    "headline": "デザインから、デジタルへ。",
+    "intro": "中国の楽山師範学院でビジュアルコミュニケーションデザインを専攻。川茶グループで約3年間、パッケージを中心としたグラフィックデザインに従事しました。現在は東京でアプリ・Web制作を学び、視覚表現と技術の両面から、使う人に届くものづくりを目指しています。",
+    "experience": [
+      {
+        "id": "chuancha",
+        "period": "2020.09 — 2023.05",
+        "title": "川茶グループ（川茶集団）",
+        "subtitle": "中国 / デザイン部 / グラフィックデザイナー",
+        "details": [
+          "茶葉の栽培・加工・販売、ブランド運営を行う川茶グループにて、約3年間、自社ブランドのパッケージデザインおよび販促物制作に従事。",
+          "新商品のパッケージデザインを開発。印刷コストや構造上の制約を踏まえ、手に取りやすさと量産性を両立するデザインを追求。",
+          "ロゴ、カタログ、ポスターなどの販促ツールを制作。",
+          "印刷会社との入稿データ調整および色校正を担当。",
+          "ブランドイメージの統一と向上を目的としたビジュアルを提案。"
+        ]
+      },
+      {
+        "id": "mcdonalds",
+        "period": "2024.07 — 現在",
+        "title": "マクドナルド ポンテポルタ店",
+        "subtitle": "日本 / アルバイト",
+        "details": []
+      }
+    ],
+    "education": [
+      {
+        "id": "waseda",
+        "period": "2025.04 — 2027.03 卒業見込み",
+        "title": "早稲田文理専門学校",
+        "subtitle": "学校法人中央情報学園 / アプリ・Web制作学科",
+        "details": [
+          "Java・Spring Bootを用いたシステム開発とWeb制作を学習中。"
+        ]
+      },
+      {
+        "id": "joto",
+        "period": "2023.10 — 2025.03",
+        "title": "城東日本語学校",
+        "subtitle": "卒業",
+        "details": []
+      },
+      {
+        "id": "leshan",
+        "period": "2014.09 — 2019.06",
+        "title": "楽山師範学院",
+        "subtitle": "ビジュアルコミュニケーションデザイン専攻 / 卒業",
+        "details": []
+      },
+      {
+        "id": "yibin",
+        "period": "2011.09 — 2014.06",
+        "title": "中国四川省宜賓市第三高等学校",
+        "subtitle": "卒業",
+        "details": []
+      }
+    ],
+    "qualifications": [
+      {
+        "id": "it-passport",
+        "period": "2026",
+        "title": "ITパスポート試験 合格"
+      },
+      {
+        "id": "information",
+        "period": "2025.12",
+        "title": "情報検定 情報活用試験 3級"
+      },
+      {
+        "id": "spreadsheet",
+        "period": "2025.12",
+        "title": "情報処理技能検定試験（表計算）3級"
+      },
+      {
+        "id": "jlpt",
+        "period": "2024",
+        "title": "日本語能力試験（JLPT）N2"
+      },
+      {
+        "id": "lettering",
+        "period": "2024.06",
+        "title": "レタリング技能検定 3級"
+      }
+    ]
   }
 }

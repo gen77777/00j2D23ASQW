@@ -1,0 +1,30 @@
+/*
+ * Three type roles, three families — see README.md "Type system" for the justification of each.
+ *   display : Bricolage Grotesque — variable opsz/wdth axes, the face people screenshot.
+ *   sans    : Hanken Grotesk      — neutral body grotesque (already in use, kept for continuity).
+ *   mono    : Martian Mono        — utility role: eyebrows, indices, timestamps, form labels.
+ */
+@theme {
+  --font-display: var(--font-bricolage), "Helvetica Neue", Arial, sans-serif;
+  --font-sans: var(--font-hanken), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-martian-mono), ui-monospace, "SFMono-Regular", monospace;
+
+  --text-display: clamp(3rem, 9vw, 11rem);
+  --text-eyebrow: 0.6875rem; /* 11px */
+}
+
+@utility eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-eyebrow);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-60);
+}
+
+@utility display-heading {
+  font-family: var(--font-display);
+  font-size: var(--text-display);
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  font-optical-sizing: auto;
+}

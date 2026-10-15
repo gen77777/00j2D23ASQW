@@ -1,44 +1,66 @@
-# Portfolio CMS
+# Portfolio
 
-A Next.js 14 based portfolio application with an integrated local Content Management System (CMS) and custom 3D web animations.
+A Next.js 16 (App Router) personal portfolio built around one signature element — a scroll-scrubbed,
+pointer-tilted "typographic ring" — plus a hand-rolled, password-protected CMS and a full GSAP/Lenis
+motion system with a real `prefers-reduced-motion` fallback throughout. See `MOTION.md` for a
+timeline-by-timeline breakdown of every animation.
 
 ## Features
 
-- **Next.js App Router**: Server-side rendering and static generation.
-- **Local JSON CMS**: Manage hero section, typography, 3D parameters, and project media via a dedicated `/admin` route.
-- **GSAP Animations**: Custom 3D cylinder text transformations and smooth reveal effects.
-- **Custom Cursor**: Canvas-based interactive cursor with trajectory trails.
-- **Production Ready**: Optimized Docker multi-stage build setup with standalone output.
+- **Next.js App Router**, static-first, server-rendered content from a single JSON file.
+- **Design tokens**: a dark-first `ink`/`paper` monochrome system (see `src/styles/tokens.css`) —
+  flat UI stays two colors; everything else is an event owned by motion.
+- **Type system**: three roles, three families — Bricolage Grotesque (display, variable
+  opsz/wdth), Hanken Grotesk (body), Martian Mono (utility/eyebrows). All self-hosted via
+  `next/font`, no static weight files.
+- **Motion system**: `MotionProvider` owns Lenis + GSAP plugin registration + reduced-motion
+  detection; `SplitLines`, `Marquee`, `MagneticButton`, `Cursor`, `TypographicRing` build on it.
+  Full contract in `MOTION.md`.
+- **CMS**: a local JSON file (`src/data/content.json`) edited through `/admin`, gated by a
+  password (scrypt + HMAC-signed cookie via `proxy.ts`) — see Admin access below. Image uploads
+  are resized and converted to WebP with `sharp`.
+- **Routes**: `/`, `/contact`, `/projects/[slug]`, `/privacy-policy`, plus generated
+  `sitemap.xml`, `robots.txt`, and per-route Open Graph/Twitter share images.
 
-## Local Development
+## Local development
 
 ```bash
-# Install dependencies
 npm install
-
-# Start development server
 npm run dev
 ```
 
-Navigate to `http://localhost:3000` for the frontend application.
-Navigate to `http://localhost:3000/admin` for the CMS dashboard.
+Visit `http://localhost:3000` for the site. `/admin` requires environment variables — see below.
+
+## Admin access
+
+`/admin` has no default credentials; you set them yourself:
+
+```bash
+# Generate ADMIN_PASSWORD_HASH
+node scripts/hash-password.mjs "your-password"
+
+# Generate SESSION_SECRET
+node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
+```
+
+Copy `.env.example` to `.env.local` and paste both values in, plus `NEXT_PUBLIC_SITE_URL` for
+production (used for canonical URLs, the sitemap, and Open Graph image resolution). Without these
+set, `/admin` will redirect to a login screen you can't pass — that's expected, not a bug.
 
 ## Deployment (Docker)
 
-The application includes a `Dockerfile` optimized for Next.js standalone builds and a `docker-compose.yml` for simplified orchestration.
-
-### 1. Build and Start
 ```bash
-docker-compose up -d --build
+cp .env.example .env   # fill in SESSION_SECRET / ADMIN_PASSWORD_HASH / NEXT_PUBLIC_SITE_URL
+docker compose up -d --build
 ```
 
-### 2. Volume Mapping
-The `docker-compose.yml` mounts local directories to persist CMS data across container restarts:
-- `./src/data:/app/src/data`
-- `./public/uploads:/app/public/uploads`
+- Base image is `node:22-alpine` (Next.js 16 requires Node 20.9+).
+- `docker-compose.yml` bind-mounts `./src/data` and `./public/uploads` so CMS edits and uploaded
+  images persist across container restarts — there's no database, by design (see "CMS" above).
+- `next.config.ts` includes `outputFileTracingIncludes` for `sharp`'s native binary, per Next's
+  own standalone-output guidance.
 
-### 3. Nginx Reverse Proxy Example
-Map the exposed port 3000 to your domain using standard reverse proxy configuration:
+### Reverse proxy example
 
 ```nginx
 server {
@@ -55,7 +77,7 @@ server {
 
 ## Stack
 
-- Next.js (React)
-- Tailwind CSS
-- GSAP (GreenSock Animation Platform)
-- Lenis (Smooth Scrolling)
+- Next.js 16 (App Router, Turbopack)
+- Tailwind CSS v4 (CSS-first `@theme`)
+- GSAP (ScrollTrigger, SplitText) + Lenis
+- sharp (image processing)

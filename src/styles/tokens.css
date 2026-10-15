@@ -1,0 +1,32 @@
+/*
+ * Dark-first inversion of the brief's ink/paper pair. This site's identity is a dark canvas,
+ * so --paper (the default ground) is near-black and --ink (type, rules, inverted sections) is
+ * white. The rule that matters is preserved either way: two colors carry the entire flat UI,
+ * and every other color on the page is an event owned by motion (the ring, the cursor verb,
+ * project media) or by the "paper" utility for the rare light-flip section — never a background.
+ */
+@theme {
+  --color-paper: #000000;
+  --color-paper-raised: #0d0d0d;
+  --color-ink: #ffffff;
+  --radius-none: 0px;
+  --radius-pill: 999px;
+}
+
+:root {
+  --color-paper: #000000;
+  --color-paper-raised: #0d0d0d;
+  --color-ink: #ffffff;
+  --ink-60: rgba(255, 255, 255, 0.75);
+  --hair: rgba(255, 255, 255, 0.15);
+
+  --gutter: clamp(16px, 2vw, 32px);
+  --page-max: 1600px;
+  --section-pad: clamp(40px, 6vw, 72px);
+}
+
+/*
+ * Spacing scale: Tailwind's default 0.25rem step already produces every value the brief asks
+ * for (p-1=4px, p-2=8px, p-3=12px, p-4=16px, p-6=24px, p-8=32px, p-12=48px, p-16=64px, p-24=96px,
+ * p-32=128px, p-48=192px) — no custom --spacing-* tokens needed, use those utilities directly.
+ */
